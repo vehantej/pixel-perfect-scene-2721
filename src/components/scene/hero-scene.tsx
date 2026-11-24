@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 
-import bgFar from "@/assets/bg-far.png.asset.json";
-import bgKeyart from "@/assets/bg-keyart.png.asset.json";
-import layerFront from "@/assets/layer-front.png.asset.json";
-import layerMid from "@/assets/layer-mid.png.asset.json";
+const bgFar = "/assets/bg-far.png";
+const bgKeyart = "/assets/bg-keyart.png";
+const layerMid = "/assets/layer-mid.png";
+const layerFront = "/assets/layer-front.png";
 import { ChromaKeyImage } from "@/components/scene/chroma-key-image";
 import { Fireflies } from "@/components/scene/fireflies";
 
@@ -41,14 +41,14 @@ export function HeroScene() {
 
   return (
     <div ref={sceneRef} className="hero-scene" aria-hidden="true">
-      <img className="scene-layer scene-layer--far" data-depth="0.02" src={bgFar.url} alt="" fetchPriority="high" />
-      <img className="scene-layer scene-layer--keyart" data-depth="0.04" src={bgKeyart.url} alt="" fetchPriority="high" />
+      <img className="scene-layer scene-layer--far" data-depth="0.02" src={bgFar} alt="" fetchPriority="high" />
+      <img className="scene-layer scene-layer--keyart" data-depth="0.04" src={bgKeyart} alt="" fetchPriority="high" />
       <div className="scene-layer scene-layer--mid" data-depth="0.07">
-        <ChromaKeyImage src={layerMid.url} alt="" />
+        <ChromaKeyImage src={layerMid} alt="" />
       </div>
       <Fireflies />
       <div className="scene-layer scene-layer--front" data-depth="0.12">
-        <ChromaKeyImage src={layerFront.url} alt="" />
+        <ChromaKeyImage src={layerFront} alt="" />
       </div>
       <div className="scene-vignette" />
     </div>

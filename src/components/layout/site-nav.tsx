@@ -20,9 +20,15 @@ export function SiteNav({ muted, onToggleMuted, onBegin }: SiteNavProps) {
           <span>PyArena</span>
         </Link>
         <nav className="nav-links" aria-label="Main navigation">
-          {navLinks.map((item) => (
-            <Link key={item.label} to="/" hash={item.hash}>{item.label}</Link>
-          ))}
+          {navLinks.map((item) =>
+            item.label === "Play" ? (
+              <button key={item.label} type="button" className="nav-link-btn" onClick={onBegin}>
+                {item.label}
+              </button>
+            ) : (
+              <Link key={item.label} to="/" hash={item.hash}>{item.label}</Link>
+            ),
+          )}
         </nav>
         <div className="nav-actions">
           <Button

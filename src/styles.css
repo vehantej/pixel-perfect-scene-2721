@@ -186,6 +186,12 @@
     margin: 0;
   }
 
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
@@ -198,8 +204,18 @@
 }
 
 .app-shell {
-  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  overflow: hidden;
   background: var(--jungle);
+}
+
+.app-shell > main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .site-nav {
@@ -270,15 +286,22 @@
 }
 
 .nav-links a,
+.nav-links .nav-link-btn,
 .footer-links a {
   color: var(--cream);
   text-decoration: none;
   font-size: 0.88rem;
   font-weight: 800;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
   transition: color var(--motion-fast), text-shadow var(--motion-fast);
 }
 
 .nav-links a:hover,
+.nav-links .nav-link-btn:hover,
 .footer-links a:hover {
   color: var(--venom);
   text-shadow: 0 0 14px oklch(0.88 0.2 126 / 0.45);
@@ -387,8 +410,9 @@
 
 .hero-stage {
   position: relative;
-  min-height: min(56rem, 100svh);
-  min-height: max(43rem, min(56rem, 100svh));
+  flex: 1;
+  height: 100%;
+  min-height: 0;
   isolation: isolate;
   overflow: hidden;
   background: var(--jungle);
@@ -438,8 +462,8 @@
 
 .chroma-canvas {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
 }
 
@@ -534,28 +558,16 @@
 }
 
 .hero-pip {
-  width: clamp(13rem, 28vw, 22rem);
+  width: auto;
+  height: clamp(12rem, 30vh, 18rem);
+  max-width: 70vw;
+  object-fit: contain;
   filter: drop-shadow(0 0 22px oklch(0.84 0.17 87 / 0.46));
   animation: pip-bob 3.2s ease-in-out infinite;
 }
 
 .scroll-hint {
-  position: absolute;
-  z-index: 7;
-  right: 0;
-  bottom: 1rem;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
-  color: var(--cream);
-  text-decoration: none;
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.78;
+  display: none;
 }
 
 .scroll-hint svg {
